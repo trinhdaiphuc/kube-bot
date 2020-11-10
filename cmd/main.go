@@ -126,8 +126,8 @@ func main() {
 	}
 
 	httpHandler := &HTTPHandler{adapter}
-
+	port := os.Getenv("PORT")
 	http.HandleFunc("/api/messages", httpHandler.processMessage)
-	fmt.Println("Starting server on port:3978...")
-	http.ListenAndServe(":3978", nil)
+	fmt.Println("Starting server on port", port)
+	http.ListenAndServe(":"+port, nil)
 }
